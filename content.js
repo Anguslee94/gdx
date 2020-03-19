@@ -1,6 +1,6 @@
-const XPATH = "//html/body/div[2]/div[1]/div[3]/div[1]/div/table/tr[1]/td[2]/div/div[2]/div[2]/div[2]/div";
+const XPATH = "//html/body/div[2]/div[1]/div[2]/div[1]/div/table/tr[1]/td[2]/div/div[2]/div[2]/div[2]/div";
 const XPATH_TITLE = "div[1]/div[1]";
-const XPATH_VALUE = "div[3]/div/div/div";
+const XPATH_VALUE = "div[2]/div/div[5]/div";
 const TICKERS_SHARE = [
   ["NEM", "US", 34055004],
   ["GOLD", "US", 73846019],
@@ -63,7 +63,7 @@ function evaluate() {
   };
 
   return TICKERS_SHARE.reduce((acc, [ticker, exc, share]) => {
-    return acc + (result[ticker] * share * result[exc] || 1);
+    return acc + (result[ticker] * share * (result[exc] || 1));
   }, 0);
 }
 
